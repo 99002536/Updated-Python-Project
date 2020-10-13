@@ -1,37 +1,28 @@
 import Rd_Hsptl_Ex_sheet
 import Wrt_Hsptl_Ex_sheet
-
-
 def AppointmentIndexInDoctorsDataBase(patient_ID):
     for i in Doc_DataBase:
         for j in Doc_DataBase[i]:
             if str(patient_ID) == str(j[0]):
                 Appointment_index = Doc_DataBase[i].index(j)
                 return Appointment_index, i
-
-
 print("****************************************************************************")
 print("*                   WELCOME TO NALANDA HOSPITAL!!!!                     *")
 print("****************************************************************************")
-
 t = 0
 tf = ""
 while tf != "Close":
-
     Pat_DataBase = Rd_Hsptl_Ex_sheet.Rd_Patients_DB()
     Doc_DataBase = Rd_Hsptl_Ex_sheet.Rd_Doctors_DB()
-
     print("-----------------------------------------")
     print("| 1---->Admin Mode			|\n|2------>User Mode			|")
     print("-----------------------------------------")
     Admin_user_mode = input("Enter mode : ")
-
     if Admin_user_mode == "1":  # Admin mode
         print(
             "*****************************************\n|         Welcome to admin mode         |\n*****************************************")
         Password = input("Enter Password : ")
         while True:
-
             if Password == "1234":
                 print("-----------------------------------------")
                 print(
@@ -39,7 +30,6 @@ while tf != "Close":
                 print("-----------------------------------------")
                 AdminOptions = input("Enter your choice : ")
                 AdminOptions = AdminOptions.upper()
-
                 if AdminOptions == "1":  # Admin mode --> Pateints Management
                     print("-----------------------------------------")
                     print("|To add new patient---------> Enter 1	  	|")
@@ -50,7 +40,6 @@ while tf != "Close":
                     print("-----------------------------------------")
                     Admin_choice = input("Enter your choice : ")
                     Admin_choice = Admin_choice.upper()
-
                     if Admin_choice == "1":  # Admin mode --> Pateints Management --> Enter new patient data
                         try:  # To avoid non integer input
                             patient_ID = int(input("Enter patient ID : "))
@@ -83,7 +72,6 @@ while tf != "Close":
                             print("patient is followed by doctor : " + Pat_DataBase[patient_ID][1])
                         except:
                             print("Patient ID should be an integer number")
-
                     elif Admin_choice == "3":  # Admin mode --> Pateints Management --> Delete patient data
                         try:  # To avoid non integer input
                             patient_ID = int(input("Enter patient ID : "))
@@ -93,7 +81,6 @@ while tf != "Close":
                             print("----------------------Patient data deleted successfully----------------------")
                         except:
                             print("Patient ID should be an integer number!!!!!!!!!!!!!")
-
                     elif Admin_choice == "4":  # Admin mode --> Pateints Management --> Edit patient data
                         try:  # To avoid non integer input
                             patient_ID = int(input("Enter patient ID : "))
@@ -116,50 +103,39 @@ while tf != "Close":
                                     Pat_DataBase[patient_ID][0] = input("\nEnter patient department : ")
                                     print(
                                         "----------------------Patient Department edited successfully----------------------")
-
                                 elif Admin_choice == "2":
                                     Pat_DataBase[patient_ID][1] = input("\nEnter Doctor follouing case : ")
                                     print(
                                         "----------------------Doctor following case edited successfully----------------------")
-
                                 elif Admin_choice == "3":
                                     Pat_DataBase[patient_ID][2] = input("\nEnter patient name : ")
                                     print(
                                         "----------------------Patient name edited successfully----------------------")
-
                                 elif Admin_choice == "4":
                                     Pat_DataBase[patient_ID][3] = input("\nEnter patient Age : ")
                                     print("----------------------Patient age edited successfully----------------------")
-
                                 elif Admin_choice == "5":
                                     Pat_DataBase[patient_ID][4] = input("\nEnter patient gender : ")
                                     print(
                                         "----------------------Patient address gender successfully----------------------")
-
                                 elif Admin_choice == "6":
                                     Pat_DataBase[patient_ID][5] = input("\nEnter patient address : ")
                                     print(
                                         "----------------------Patient address edited successfully----------------------")
-
                                 elif Admin_choice == "7":
                                     Pat_DataBase[patient_ID][6] = input("\nEnter patient RoomNumber : ")
                                     print(
                                         "----------------------Patient RoomNumber edited successfully----------------------")
-
                                 elif Admin_choice == "B":
                                     break
-
                                 else:
                                     print("Please Enter a correct choice")
                         except:
                             print("Patient ID should be an integer number")
-
                     elif Admin_choice == "B":  # Admin mode --> Pateints Management --> Back
                         break
-
                     else:
                         print("Please enter a correct choice\n")
-
                 elif AdminOptions == "2":  # Admin mode --> Doctors Management
                     print("-----------------------------------------")
                     print("|To add new doctor Enter 1              |")
@@ -170,13 +146,11 @@ while tf != "Close":
                     print("-----------------------------------------")
                     Admin_choice = input("Enter your choice : ")
                     Admin_choice = Admin_choice.upper()
-
                     if Admin_choice == "1":  # Admin mode --> Doctors Management --> Enter new doctor data
                         try:  # To avoid non integer input
                             Doctor_ID = int(input("Enter doctor ID : "))
                             while Doctor_ID in Doc_DataBase:  # if Admin entered used ID
                                 Doctor_ID = int(input("This ID is unavailable, please try another ID : "))
-
                             Department = input("Enter Doctor department : ")
                             Name = input("Enter Doctor name       : ")
                             Address = input("Enter Doctor address    : ")
@@ -184,7 +158,6 @@ while tf != "Close":
                             print("----------------------Doctor added successfully----------------------")
                         except:
                             print("Doctor ID should be an integer number")
-
                     elif Admin_choice == "2":  # Admin mode --> Doctors Management --> Display doctor data
                         try:  # To avoid non integer input
                             Doctor_ID = int(input("Enter doctor ID : "))
@@ -195,7 +168,6 @@ while tf != "Close":
                             print("Doctor is in " + Doc_DataBase[Doctor_ID][0][0] + " department")
                         except:
                             print("Doctor ID should be an integer number")
-
                     elif Admin_choice == "3":  # Admin mode --> Doctors Management --> Delete doctor data
                         try:  # To avoid non integer input
                             Doctor_ID = int(input("Enter doctor ID : "))
@@ -205,7 +177,6 @@ while tf != "Close":
                             print("/----------------------Doctor data deleted successfully----------------------/")
                         except:
                             print("Doctor ID should be an integer number")
-
                     elif Admin_choice == "4":  # Admin mode --> Doctors Management --> Edit Doctor data
                         try:  # To avoid non integer input
                             Doctor_ID = input("Enter doctor ID : ")
@@ -223,31 +194,23 @@ while tf != "Close":
                                 Doc_DataBase[Doctor_ID][0][0] = input("Enter Doctor's Department : ")
                                 print(
                                     "/----------------------Doctor's department edited successfully----------------------/")
-
                             elif Admin_choice == "2":
                                 Doc_DataBase[Doctor_ID][0][1] = input("Enter Doctor's Name : ")
                                 print("----------------------Doctor's name edited successfully----------------------")
-
                             elif Admin_choice == "3":
                                 Doc_DataBase[Doctor_ID][0][2] = input("Enter Doctor's Address : ")
                                 print(
                                     "----------------------Doctor's address edited successfully----------------------")
-
                             elif Admin_choice == "B":
                                 break
-
                             else:
                                 print("\nPlease enter a correct choice\n")
-
                         except:
                             print("Doctor ID should be an integer number")
-
                     elif Admin_choice == "B":  # Back
                         break
-
                     else:
                         print("\nPlease enter a correct choice\n")
-
                 elif AdminOptions == "3":  # Admin mode --> Appointment Management
                     print("-----------------------------------------")
                     print("|To book an appointment Enter 1         |")
@@ -272,8 +235,6 @@ while tf != "Close":
                                 patient_ID = int(input("Enter patient ID : "))
                                 while patient_ID not in Pat_DataBase:  # if Admin entered incorrect ID
                                     patient_ID = int(input("Incorrect ID, please Enter a correct patient ID : "))
-
-
                             elif Admin_choice == "2":
                                 patient_ID = int(input("Enter patient ID : "))
                                 while patient_ID in Pat_DataBase:  # if Admin entered used ID
@@ -287,22 +248,18 @@ while tf != "Close":
                                 RoomNumber = ""
                                 Pat_DataBase[patient_ID] = [Department, DoctorName, Name, Age, Gender, Address,
                                                                  RoomNumber]
-
                             elif Admin_choice == "B":
                                 break
-
                             Session_Start = input("Session starts at : ")
                             while Session_Start[:2] == "11" or Session_Start[:2] == "12":
                                 Session_Start = input(
                                     "Appointments should be between 01:00PM to 10:00PM, Please enter a time between working hours : ")
-
                             for i in Doc_DataBase[Doctor_ID]:
                                 if type(i[0]) != str:
                                     while Session_Start >= i[1] and Session_Start < i[2]:
                                         Session_Start = input(
                                             "This appointment is already booked, Please Enter an other time for start of session : ")
                             Session_End = input("Session ends at : ")
-
                             New_Appointment = list()
                             New_Appointment.append(patient_ID)
                             New_Appointment.append(Session_Start)
@@ -311,7 +268,6 @@ while tf != "Close":
                             print("/----------------------Appointment booked successfully----------------------/")
                         except:
                             print("Doctor ID should be an integer number")
-
                     elif Admin_choice == "2":  # Admin mode --> Appointment Management --> Edit an appointment
                         try:  # To avoid non integer input
                             patient_ID = int(input("Enter patient ID : "))
@@ -323,7 +279,6 @@ while tf != "Close":
                                 while Session_Start[:2] == "11" or Session_Start[:2] == "12":
                                     Session_Start = input(
                                         "Appointments should be between 01:00PM to 10:00PM, Please enter a time between working hours : ")
-
                                 for i in Doc_DataBase[Doctor_ID]:
                                     if type(i[0]) != str:
                                         while Session_Start >= i[1] and Session_Start < i[2]:
@@ -336,7 +291,6 @@ while tf != "Close":
                                 print("No Appointment for this patient")
                         except:
                             print("Doctor ID should be an integer number")
-
                     elif Admin_choice == "3":  # Admin mode --> Appointment Management --> Cancel an appointment
                         try:  # To avoid non integer input
                             patient_ID = int(input("Enter patient ID : "))
@@ -353,17 +307,12 @@ while tf != "Close":
 
                     elif Admin_choice == "B":  # Back
                         break
-
                     else:
                         print("please enter a correct choice")
-
                 elif AdminOptions == "B":  # Back
                     break
-
-                else:
+                    else:
                     print("Please enter a correct option")
-
-
             elif Password != "1234":
                 if t < 2:
                     Password = input("Password incorrect, please try again : ")
@@ -372,11 +321,8 @@ while tf != "Close":
                     print("Incorrect password, no more tries")
                     tf = "Close the program"
                     break
-
             Wrt_Hsptl_Ex_sheet.Wrt_Patients_Db(Pat_DataBase)
             Wrt_Hsptl_Ex_sheet.Wrt_Doc_Db(Doc_DataBase)
-
-
     elif Admin_user_mode == "2":  # User mode
         print(
             "****************************************\n|         Welcome to user mode         |\n****************************************")
@@ -391,26 +337,22 @@ while tf != "Close":
             print("-----------------------------------------")
             UserOptions = input("Enter your choice : ")
             UserOptions = UserOptions.upper()
-
             if UserOptions == "1":  # User mode --> view hospital's departments
                 print("Hospital's departments :")
                 for i in Doc_DataBase:
                     print("	" + Doc_DataBase[i][0][0])
-
             elif UserOptions == "2":  # User mode --> view hospital's Doctors
                 print("Hospital's doctors :")
                 for i in Doc_DataBase:
                     print(
                         "	" + Doc_DataBase[i][0][1] + " in " + Doc_DataBase[i][0][0] + " department, from " +
                         Doc_DataBase[i][0][2])
-
             elif UserOptions == "3":  # User mode --> view patients' residents
                 for i in Pat_DataBase:
                     print("	Patient : " + Pat_DataBase[i][2] + " in " + Pat_DataBase[i][
                         0] + " department and followed by " + Pat_DataBase[i][1] + ", age : " +
                           Pat_DataBase[i][3] + ", from : " + Pat_DataBase[i][5] + ", RoomNumber : " +
                           Pat_DataBase[i][6])
-
             elif UserOptions == "4":  # User mode --> view patient's details
                 try:  # To avoid non integer input
                     patient_ID = int(input("Enter patient's ID : "))
@@ -425,7 +367,6 @@ while tf != "Close":
                     print("	patient is followed by doctor : " + Pat_DataBase[patient_ID][1])
                 except:
                     print("Patient ID should be an integer number")
-
             elif UserOptions == "5":  # User mode --> view doctor's appointments
                 try:  # To avoid non integer input
                     Doctor_ID = int(input("Enter doctor's ID : "))
@@ -439,13 +380,9 @@ while tf != "Close":
                             print("	from : " + i[1] + "    to : " + i[2])
                 except:
                     print("Doctor ID should be an integer number")
-
             elif UserOptions == "B":  # Back
                 break
-
             else:
                 print("Please Enter a correct choice")
-
-
     else:
         print("Please choice just 1 or 2")
